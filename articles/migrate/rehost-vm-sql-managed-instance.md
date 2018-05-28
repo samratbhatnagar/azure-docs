@@ -1,5 +1,5 @@
 ---
-title: Rehost: Migrate and rehost an on-premises app to Azure | Microsoft Docs
+title: Rehost-Migrate and rehost an on-premises app to Azure | Microsoft Docs
 description: Learn how rehost an on-premises app and  with a lift-and-shift migration to Azure  for migration of on-premises machines using the Data Migration Assistant (DMA), and the Azure Migrate service.
 services: site-recovery
 author: rayne-wiselman
@@ -8,8 +8,8 @@ ms.topic: tutorial
 ms.date: 05/28/2018
 ms.author: raynew
 ms.custom: MVC
-
 ---
+
 # Rehost: Migrate an on-premises app to Azure VMs and SQL Managed Instance
 
 This is the second article in a series that shows how the fictional organization Contoso are moving their on-premises infrastructure to the Azure cloud. [Learn more](https://docs.microsoft.com/azure/migrate/migrate-scenarios-overview) about the series.
@@ -68,13 +68,12 @@ Contoso will migrate both their web and data tiers of the SmartHotel application
 
 1. The data tier will be migrated using the Data Migration Service (DMS).  DMS will connect to the on-premises SQL Server VM across a site-to-site VPN connection between the Contoso datacenter and Azure, and then migrate the database.
 
-    ![DMS architecture](media/rehost-vm-sql-managed-instance-/architecture-dms.png) 
+    ![DMS architecture](media/rehost-vm-sql-managed-instance/architecture-dms.png) 
 
 
 2. The web tier will be migrated using a lift-and-shift migration with Azure Site Recovery. This will entail preparing the on-premises VMware environment, setting up and enabling replication, and migrating the VMs by failing them over to Azure.
 
-     ![Site Recovery architecture](media/rehost-vm-sql-managed-instance-/architecture-asr.png) 
-
+     ![Site Recovery architecture](media/rehost-vm-sql-managed-instance/architecture-asr.png) 
 
 
 ## Prerequisites
@@ -117,6 +116,7 @@ For this scenario you will need to create another virtual network that's dedicat
 - The subnet mustn't have a service endpoint (storage or SQL) associated with it. Service endpoints should be disabled on the virtual network.
 - The subnet must have minimum of 16 IP addresses. [Learn more](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances) about sizing the managed instance subnet.
 
+Contoso sets up the VNet as follows: 
 1. Contoso creates a new VNet (VNET-SQLMI-EU2) in the primary East US 2 region.
 2. The VNet is added to the ContosoNetworkingRG resource group.
 3. Contoso assigns an address space of 10.235.0.0/24, ensuring that the range doesn't overlap with any other networks in the Contoso enterprise.
@@ -251,6 +251,8 @@ Site Recovery needs access to VMware servers to:
 - Automatically discover VMs. At least a read-only account is required.
 - Orchestrate replication, failover, and failback. You need an account that can run operations such as creating and removing disks, and turning on VMs.
 
+Contoso sets up the account as follows:
+
 1. Contoso creates a role at the vCenter level.
 2. Contoso then assigns that role the required permissions.
 
@@ -283,7 +285,7 @@ After failover to Azure, Contoso want to be able to connect to the replicated VM
 In addition, when they run a failover they need to check the following:
 
 - There should be no Windows updates pending on the VM when triggering a failover. If there are, they won't be able to log in to the virtual machine until the update completes.
-1. After failover, they should check **Boot diagnostics** to view a screenshot of the VM. If this doesn't work, they should check that the VM is running and review these [troubleshooting tips](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- After failover, they should check **Boot diagnostics** to view a screenshot of the VM. If this doesn't work, they should check that the VM is running and review these [troubleshooting tips](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 
 ## Step 5: Replicate the on-premises VMs to Azure with Site Recovery
@@ -388,7 +390,7 @@ You can read a full walkthrough of all these steps in [Enable replication](https
         ![DMS source](./media/rehost-vm-sql-managed-instance/dms-wizard-source.png)
 
     - They select the database to migrate.
-    - 
+
          ![DMS source database](./media/rehost-vm-sql-managed-instance/dms-wizard-sourcedb.png)
 
     - As a target, they select the Managed Instance in Azure, and access credentials.
@@ -458,6 +460,11 @@ As the final step in the migration process, Contoso update the connection string
 5. After IIS has been restarted, the application is now be using the database running on the SQL MI.
 6. At this point Contoso can shut down the SQLVM machine on-premises, and the migration is complete.
 
+**Need more help?**
+
+- [Learn about](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure) running a test failover. 
+- [Learn](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) how to create a recovery plan.
+- [Learn about](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) failing over to Azure.
 
 ## Step 8: Clean up after migration
 
