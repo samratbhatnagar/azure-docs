@@ -19,11 +19,11 @@ This document is one in a series of articles that document how the fictitious co
 **Article** | **Migration type** | **Details**
 --- | --- | --- 
 [1. Overview](contoso-migration-overview.md) | All scenarios | Get an overview of migration strategies and the Contoso migration scenarios.
-2. Deploy a migration infrastructure (this article) | All scenarios | Learn about the infrastructure components and settings that Contoso needs to put in place for their migration.
+Deploy a migration infrastructure (this article) | All scenarios | Learn about the infrastructure components and settings that Contoso needs to put in place for their migration.
 [3. Assess resources for migration](contoso-migration-assessment) | All scenarios | Assess your on-premises resources to figure if they're ready for migration to Azure.
 [4. Migrate to an Azure VM and Azure SQL Managed Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Rehost (lift-and-shift) | In the first in an article that shows how to rehost apps on Azure without reconfiguring them, Contoso performs a simple lift-and-shift migration for their tiered on-premises SmartHotel appIn this scenario, Contoso migrates the app frontend VM to an Azure VM, and the app database to an Azure SQL Managed Instance.
 [5. Migrate to Azure VMs](contoso-migration-rehost-vm-sql-managed-instance.md) | Rehost (lift-and-shift) | In the second of our rehosting articles,  Contoso migrates their tiered on-premises SmartHotel app to Azure VMs only, using the Azure Site Recovery service.
-6. Migrate to an Azure VM and SQL Server Availability Group | Rehost (lift-and-shift) | In this article, Contoso rehosts the tiered on-premises app frontened to an Azure VM, and the app database to an Azure SQL Server availability group. 
+Migrate to an Azure VM and SQL Server Availability Group | Rehost (lift-and-shift) | In this article, Contoso rehosts the tiered on-premises app frontened to an Azure VM, and the app database to an Azure SQL Server availability group. 
 
 ## Overview
 
