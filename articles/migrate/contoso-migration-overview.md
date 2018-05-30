@@ -45,12 +45,12 @@ The articles summarized in the table use the fictional Contoso company, and desc
 
 **Article** | **Details** | **Status**
 --- | --- | ---
-1. Overview (this article) | Provides an overview of Contoso's migration strategy, and the sample articles | Live
-2. [Deploy an Azure infrastructure](contoso-migration-infrastructure.md) | This articles describes how Contoso prepares its infrastructure for Azure migration. The infrastructure will be used for all Contoso migration scenarios. | Live
-3. [Assess on-premises resources](contoso-migration-assessment) | In this article, Contoso ran an assessment of resources running a on-premises SmartHotel app. They assessed VMs running the app with the Azure Migrate service, and the assessed the app's SQL Server database with the Azure Database Migration Assistant. 
-4. [Refactor: Lift and shift to Azure VMs and a SQL Managed Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to a SQL Managed Instance.
-5. [Refactor: Lift and shift to Azure VMs](contoso-migration-rehost-vm.md) | In this article Contoso migrated their SmartHotel app VMs using Site Recovery only.
-6. Refactor: Lift and shift to Azure VMs and SQL Server Availability Groups** | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to A SQL Server Availability Group.
+Overview (this article) | Provides an overview of Contoso's migration strategy, and the sample articles | Live
+[2. Deploy an Azure infrastructure](contoso-migration-infrastructure.md) | This articles describes how Contoso prepares its infrastructure for Azure migration. The infrastructure will be used for all Contoso migration scenarios. | Live
+[3. Assess on-premises resources](contoso-migration-assessment) | In this article, Contoso ran an assessment of resources running a on-premises SmartHotel app. They assessed VMs running the app with the Azure Migrate service, and the assessed the app's SQL Server database with the Azure Database Migration Assistant. 
+[4. Refactor: Lift and shift to Azure VMs and a SQL Managed Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to a SQL Managed Instance.
+[5. Refactor: Lift and shift to Azure VMs](contoso-migration-rehost-vm.md) | In this article Contoso migrated their SmartHotel app VMs using Site Recovery only.
+Refactor: Lift and shift to Azure VMs and SQL Server Availability Groups** | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to A SQL Server Availability Group.
 
 
 ### Demo apps
