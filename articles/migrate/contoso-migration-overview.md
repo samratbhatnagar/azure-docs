@@ -45,19 +45,20 @@ The articles summarized in the table use the fictional Contoso company, and desc
 
 **Article** | **Details** | **Status**
 --- | --- | ---
-**1. Overview** (this article) | Provides an overview of Contoso's migration strategy, and the sample articles | Live
-**2. Infrastructure** | This articles describes how Contoso prepares its infrastructure for Azure migration | Live
-**3. Assessment** | In this article, Contoso ran an assessment of resources running a on-premises SmartHotel app. They assessed VMs running the app with the Azure Migrate service, and the assessed the app's SQL Server database with the Azure Database Migration Assistant. 
-**4. Refactor: Lift and shift to Azure VMs and a SQL Managed Instance** | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to a SQL Managed Instance.
-**5. Refactor: Lift and shift to Azure VMs** | In this article Contoso migrated their SmartHotel app VMs using Site Recovery only.
-**6. Refactor: Lift and shift to Azure VMs and SQL Server Availability Groups** | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to A SQL Server Availability Group.
+1. Overview (this article) | Provides an overview of Contoso's migration strategy, and the sample articles | Live
+2. [Deploy an Azure infrastructure](contoso-migration-infrastructure.md) | This articles describes how Contoso prepares its infrastructure for Azure migration. The infrastructure will be used for all Contoso migration scenarios. | Live
+3. [Assess on-premises resources](contoso-migration-assessment) | In this article, Contoso ran an assessment of resources running a on-premises SmartHotel app. They assessed VMs running the app with the Azure Migrate service, and the assessed the app's SQL Server database with the Azure Database Migration Assistant. 
+4. [Refactor: Lift and shift to Azure VMs and a SQL Managed Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to a SQL Managed Instance.
+5. [Refactor: Lift and shift to Azure VMs](contoso-migration-rehost-vm.md) | In this article Contoso migrated their SmartHotel app VMs using Site Recovery only.
+6. Refactor: Lift and shift to Azure VMs and SQL Server Availability Groups** | In this article Contoso migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database to A SQL Server Availability Group.
 
 
 ### Demo apps
 
-- Each article uses a demo app - SmartHotel360. This app was developed by Microsoft as a test app that you can use when working with Azure. SmartHotel360 is open source, and can be downloaded from [GitHub](https://github.com/Microsoft/SmartHotel360).
-- osTicket is an open-source service desk ticketing app that runs on Linux, Apache, PHP, and MySQL (LAMP), and can be downloaded from [GitHub](https://github.com/osTicket/osTicket).
-- The source code and a sample development project for SmartHotel360 will be migrated to Visual Studio Team Services.
+- The articles use two demo apps - SmartHotel360, and osTicket.
+    - SmartHotel: This app was developed by Microsoft as a test app that you can use when working with Azure. You can download it from [GitHub](https://github.com/Microsoft/SmartHotel360).
+    - osTicket is an open-source service desk ticketing app that runs on Linux, Apache, PHP, and MySQL (LAMP), and can be downloaded from [GitHub](https://github.com/osTicket/osTicket).
+    - The source code and a sample development project for SmartHotel360 will be migrated to Visual Studio Team Services.
 
 **App** | **Rehost* | **Refactor** | **Rearchitect** | **Rebuild** 
 --- | --- | --- | --- | ---
@@ -66,8 +67,9 @@ osTicket | 4-osticket-iaas-iaas<br/><br/> 5-osticket-iaas-mysqldb | 2-osticket-a
 TFS | | 3-dev-test-tfs-vsts | | 
 
 
+## Next steps
 
-
+Learn how Contoso  [deploy an Azure infrastructure](contoso-migration-infrastructure.md)
 
 
 

@@ -12,14 +12,20 @@ ms.custom: MVC
 
 # Contoso series: Rehost (migrate) an on-premises app to Azure VMs 
 
-This is the fourth article in a series that shows how the ficticious organization Contoso are moving their on-premises infrastructure to the Azure cloud. [Learn more](https://docs.microsoft.com/azure/migrate/migrate-scenarios-overview) about the series.
+This article shows Contoso are rehosting their on-premises two-tier SmartHotel app by migrating it to Azure, using the Azure Site Recovery service. If you'd like to use the sample app used in this article, you can download it from [github](https://github.com/Microsoft/SmartHotel360).
 
-- In the [first article](https://docs.microsoft.com/azure/migrate/migrate-scenarios-assessment) in the series, Contoso ran an assessment of resources running a on-premises SmartHotel app. They assessed VMs running the app with the Azure Migrate service, and the assessed the app's SQL Server database with the Azure Database Migration Assistant. 
-- In the [second article](), we showed how Azure migrated their SmartHotel app using Site Recovery to migrate the Web frontend VM, and the Database Migration service to migrate the app database.
+This document is one in a series of articles that document how the fictitious company Contoso migrates their on-premises resources to the Microsoft Azure cloud. The series includes background information, and a series of scenarios that illustrate how to set up a migration infrastructure, assess the suitability of on-premises resources for migration, and run different types of migrations. Scenarios grow in complexity, and we'll be adding additional articles over time.
 
-In this article, Contoso will migrate the app VMs to Azure VMs using the Azure Site Recovery service only.
+**Article** | **Migration type** | **Details**
+--- | --- | --- 
+[1. Overview](contoso-migration-overview.md) | All scenarios | Get an overview of migration strategies and the Contoso migration scenarios.
+[2. Deploy a migration infrastructure](contoso-migration-infrastructure.md) | All scenarios | Learn about the infrastructure components and settings that Contoso needs to put in place for their migration.
+[3. Assess resources for migration](contoso-migration-assessment) | All scenarios | Assess your on-premises resources to figure if they're ready for migration to Azure.
+[4. Migrate to an Azure VM and Azure SQL Managed Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Rehost (lift-and-shift) | In our first article that shows how to rehost apps on Azure without reconfiguring them, Contoso performs a simple lift-and-shift migration for their tiered on-premises SmartHotel appIn this scenario, Contoso migrates the app frontend VM to an Azure VM, and the app database to an Azure SQL Managed Instance.
+1. Migrate to Azure VMs (this article) | Rehost (lift-and-shift) | In the second of our rehosting articles,  Contoso migrates their tiered on-premises SmartHotel app to Azure VMs only, using the Azure Site Recovery service.
+2. Migrate to an Azure VM and SQL Server Availability Group | Rehost (lift-and-shift) | In this article, Contoso rehosts the tiered on-premises app frontened to an Azure VM, and the app database to an Azure SQL Server availability group.
 
-If you'd like to use the sample app used in this article, you can download it from [github](https://github.com/Microsoft/SmartHotel360).
+
 
 ## Business drivers
 
@@ -64,7 +70,7 @@ In this scenario:
 
 Contoso will migrate the two VMs running their tiered SmartHotel application to Azure.
 
-1. They'll need to prepare Azure, prepare their on-premises VMware environment, and enable replication for the VMs.
+1. Contoso already have their Azure infrastructure in place, so they need to add a couple of Azure components for this scenario, prepare their on-premises VMware environment, and enable replication for the VMs.
 2. After VMs are replicating to Azure, they'll migrate the VMs to Azure by running a failover from their on-premises site.
 
 DIAGRAM TBD
@@ -112,7 +118,7 @@ Contoso are planning to migrate their web tier VM (WEBVM) and database VM (SQLVM
     - SQLVM, containing the database, will migrate to the database subnet (PROD-DB-EUS2), in the production network (VNET-PROD-EUS2).
 2. Contoso create an Azure storage acount (contosovmsacc20180528) in the East US 2 region. The storage account must be in the same region as the Recovery Services vault. They're using a general purpose account, with standard storage, and LRS replication. They 
 
-    ![Site Recovery storage](media/rehost-vme/asr-storage.png)
+    ![Site Recovery storage](media/rehost-vm/asr-storage.png)
 
 3. With the network and storage account in place, Contoso create a vault (ContosoMigrationVault), and place it in the ContosoFailoverRG resource group, in the primary East US 2 region.
 

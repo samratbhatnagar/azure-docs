@@ -12,18 +12,18 @@ ms.custom: MVC
 
 # Contoso series: Rehost (migrate) an on-premises app to Azure VMs and SQL Managed Instance
 
-This article shows you how Contoso migrate their SmartHotel app frontend VM to Azure VMs using the Azure Site Recovery service, and migrates the app database to an Azure SQL Managed Instance.
+This article shows you how Contoso migrate their SmartHotel app frontend VM to Azure VMs using the Azure Site Recovery service, and migrate the app database to an Azure SQL Managed Instance.
 
 This document is the fourth in a series of articles that document how the fictitious company Contoso migrates their on-premises resources to the Microsoft Azure cloud. The series includes background information, and a series of scenarios that illustrate how to set up a migration infrastructure, and run different types of migrations. Scenarios grow in complexity, and we'll be adding additional articles over time.
 
 **Article** | **Contoso scenario** | **Details**
 --- | --- | --- 
-1. [Overview](contoso-migration-overview.md) | All scenarios | Get an overview of migration strategies and the Contoso migration scenarios.
-2. [Deploy a migration infrastructure](contoso-migration-infrastructure.md) | All scenarios | Learn about the infrastructure components and settings that Contoso needs to put in place for their migration. 
-3. 3. [Assess resources for migration](contoso-migration-assessment) | All scenarios | Assess your on-premises resources to figure if they're ready for migration to Azure.
+[1. Overview](contoso-migration-overview.md) | All scenarios | Get an overview of migration strategies and the Contoso migration scenarios.
+[2. Deploy a migration infrastructure](contoso-migration-infrastructure.md) | All scenarios | Learn about the infrastructure components and settings that Contoso needs to put in place for their migration.
+[3. Assess resources for migration](contoso-migration-assessment) | All scenarios | Assess your on-premises resources to figure if they're ready for migration to Azure.
 4. Migrate to an Azure VM and Azure SQL Managed Instance (this article) | Rehost (lift-and-shift) | In the first in an article that shows how to rehost apps on Azure without reconfiguring them, Contoso performs a simple lift-and-shift migration for their tiered on-premises SmartHotel appIn this scenario, Contoso migrates the app frontend VM to an Azure VM, and the app database to an Azure SQL Managed Instance. 
-5. [Migrate to Azure VMs](contoso-migration-contoso-migration-rehost-vm-sql-managed-instance.md) | Rehost (lift-and-shift) | In the second of our rehosting articles,  Contoso migrates their tiered on-premises SmartHotel app to Azure VMs only, using the Azure Site Recovery service.
-6. Migrate to an Azure VM and SQL Server Availability Group | Rehost (lift-and-shift) | In this article, Contoso rehosts the tiered on-premises app frontened to an Azure VM, and the app database to an Azure SQL Server availability group. 
+[4. Migrate to Azure VMs](contoso-migration-contoso-migration-rehost-vm-sql-managed-instance.md) | Rehost (lift-and-shift) | In the second of our rehosting articles,  Contoso migrates their tiered on-premises SmartHotel app to Azure VMs only, using the Azure Site Recovery service.
+5. Migrate to an Azure VM and SQL Server Availability Group | Rehost (lift-and-shift) | In this article, Contoso rehosts the tiered on-premises app frontened to an Azure VM, and the app database to an Azure SQL Server availability group. 
 
 If you'd like to use the sample app used in this article, you can download it from [github](https://github.com/Microsoft/SmartHotel360).
 
@@ -73,7 +73,8 @@ In this scenario:
 
 Contoso will migrate both their web and data tiers of the SmartHotel application to Azure.
 
-1. The data tier will be migrated using the Data Migration Service (DMS).  DMS will connect to the on-premises SQL Server VM across a site-to-site VPN connection between the Contoso datacenter and Azure, and then migrate the database.
+1. Contoso already have their Azure infrastructure in place, so they need to add a couple of Azure components for this scenario.
+2. The data tier will be migrated using the Data Migration Service (DMS).  DMS will connect to the on-premises SQL Server VM across a site-to-site VPN connection between the Contoso datacenter and Azure, and then migrate the database.
 
     ![DMS architecture](media/contoso-migration-rehost-vm-sql-managed-instance/architecture-dms.png) 
 
@@ -332,9 +333,9 @@ To continue, they need to confirm that they have completed deployment planning, 
 
 Now they need to configure their source environment. To do this they download an OVF template and used it to deploy the configuration server and its associated components as a highly available, on-premises VMware VM. Components on the server include:
 
-    - The configuration server that coordinates communications between on-premises and Azure and manages data replication.
-    - The process server that acts as a replication gateway. It receives replication data; optimizes it with caching, compression, and encryption; and sends it to Azure storage.
-    - The process server also installs Mobility Service on VMs you want to replicate and performs automatic discovery of on-premises VMware VMs.
+- The configuration server that coordinates communications between on-premises and Azure and manages data replication.
+- The process server that acts as a replication gateway. It receives replication data; optimizes it with caching, compression, and encryption; and sends it to Azure storage.
+- The process server also installs Mobility Service on VMs you want to replicate and performs automatic discovery of on-premises VMware VMs.
 
 After the configuration server VM is created and started, they register it in the vault.
 
